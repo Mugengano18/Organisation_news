@@ -9,6 +9,8 @@ see all the department in a company and you can associate it with the news frm t
 - If you want to implement this project make sure you have all the necessary tools installed in your machine and to have all the required dependencies to inplement the projec
 - If you want to get to where the app is use this link to access the repository[Organisation_api](https://github.com/Mugengano18/Organisation_news)
 - You also have to create databases and tables here is some help for the tables
+
+
 CREATE DATABASE organisation;
 \c organisation;
 CREATE TABLE users(id SERIAL PRIMARY KEY,name VARCHAR,positioninc VARCHAR,role VARCHAR,departid INTEGER);
