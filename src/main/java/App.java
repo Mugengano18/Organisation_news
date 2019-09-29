@@ -3,6 +3,7 @@ import data.*;
 import exceptions.ApiException;
 import models.Companynews;
 import models.Department;
+import models.News;
 import models.User;
 import org.sql2o.Sql2o;
 
@@ -17,6 +18,7 @@ public class App {
         Sql2oUserDao userDao;
         Sql2oCompanynewsDao CompanynewsDao;
         Sql2oDepartmentDao DepartmentDao;
+        Sql2oNewsDao NewsDao;
         Connection connnect;
         Gson google =new Gson();
 
@@ -27,6 +29,7 @@ public class App {
         userDao= new Sql2oUserDao(sql2o);
         CompanynewsDao=new Sql2oCompanynewsDao(sql2o);
         DepartmentDao=new Sql2oDepartmentDao(sql2o);
+        NewsDao=new Sql2oNewsDao(sql2o);
         //CREATING THE USERS
         post("/users/new","application/json",((request, response) ->{
             User user=google.fromJson(request.body(),User.class);
@@ -98,6 +101,62 @@ public class App {
             response.status(201);
             return google.toJson(department);
         }));
+        //getting all the department
+        get("/department","applicaton/json",(request, response) -> {
+            System.out.println(DepartmentDao.All());
+
+            if (DepartmentDao.All().size()>0){
+                return google.toJson(DepartmentDao.All());
+            }
+            else{
+                return "{\"message\":\"Sorry,No department are currently saved.\"}";
+            }
+        });
+        //getting the department by id
+//        get("/companynews/:id","application/json",(request, response) -> {
+//            int depId =Integer.parseInt(request.params("id"));
+//            Department depToFind=DepartmentDao.getById(depId);
+//
+//            if(depToFind == null){
+//                throw new ApiException(404,String.format("no company with that id"));
+//
+//            }
+//            return google.toJson(depId);
+//
+//        });
+
+        //posting the department news
+        post("/news/new","application/json", (request, response) ->{
+            News news=google.fromJson(request.body(),News.class);
+            NewsDao.add(news);
+//            news.setCreation();
+            news.setFormatCreation();
+            response.status(201);
+            return google.toJson(news);
+        });
+        //getting the news
+        get("/news","applicaton/json",(request, response) -> {
+            System.out.println(NewsDao.All());
+
+            if (NewsDao.All().size()>0){
+                return google.toJson(NewsDao.All());
+            }
+            else{
+                return "{\"message\":\"Sorry,No news posted.\"}";
+            }
+        });
+        //getting the news by id
+        get("/news/:id","application/json",(request, response) -> {
+            int depaId =Integer.parseInt(request.params("id"));
+            News newsToFind=NewsDao.getById(depaId);
+
+            if(newsToFind == null){
+                throw new ApiException(404,String.format("no company with that id"));
+
+            }
+            return google.toJson(depaId);
+
+        });
         //Filters
         exception(ApiException.class,(exception,request,response) ->{
             ApiException error=exception;

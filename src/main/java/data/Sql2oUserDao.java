@@ -33,7 +33,6 @@ public class Sql2oUserDao implements UserDao {
     public List<User> All() {
         try(Connection connect=sql2o.open()){
             return connect.createQuery("SELECT * FROM users")
-                    .throwOnMappingFailure(false)
                     .executeAndFetch(User.class);
         }
     }
@@ -41,7 +40,7 @@ public class Sql2oUserDao implements UserDao {
     @Override
     public User getById(int id) {
         try(Connection connect =sql2o.open()){
-            return connect.createQuery("SELECT *FORM users WHERE id=:id;")
+            return connect.createQuery("SELECT * FROM users WHERE id=:id;")
                     .addParameter("id",id)
                     .executeAndFetchFirst(User.class);
         }
@@ -50,7 +49,7 @@ public class Sql2oUserDao implements UserDao {
 
     @Override
     public void update(int id,String newName, String newPosInCom, String newRole, String newDepart) {
-        String query= "UPDATE users SET(name, positioninc,role,departid) = (:uname,:posInCom,:role,:departt) where id=:id;";
+        String query= "UPDATE users SET(name, positioninc,role,departid) = (:uname,:posInCom,:role,:depart) where id=:id;";
         try (Connection connect=sql2o.open()){
             connect.createQuery(query)
                     .addParameter("name",newName)

@@ -6,8 +6,16 @@ import java.util.Date;
 import java.util.Objects;
 
 public class News {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     private int id;
-    private String WrittenBy;
+    private String writtenBy;
     private String content;
     private int departId;
     private long creation;
@@ -15,7 +23,7 @@ public class News {
 
 
     public News(String writtenBy, String content, int departId) {
-        WrittenBy = writtenBy;
+        this.writtenBy = writtenBy;
         this.departId = departId;
         this.content=content;
         this.creation = System.currentTimeMillis();
@@ -25,11 +33,11 @@ public class News {
 
 
     public String getWrittenBy() {
-        return WrittenBy;
+        return writtenBy;
     }
 
     public void setWrittenBy(String writtenBy) {
-        WrittenBy = writtenBy;
+        writtenBy = writtenBy;
     }
 
     public String getContent() {
@@ -78,12 +86,12 @@ public class News {
         if (o == null || getClass() != o.getClass()) return false;
         News news = (News) o;
         return departId == news.departId &&
-                Objects.equals(WrittenBy, news.WrittenBy) &&
+                Objects.equals(writtenBy, news.writtenBy) &&
                 Objects.equals(content, news.content);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(WrittenBy, content, departId);
+        return Objects.hash(writtenBy, content, departId);
     }
 }

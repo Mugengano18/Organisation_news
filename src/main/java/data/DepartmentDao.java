@@ -1,6 +1,7 @@
 package data;
 
 import models.Department;
+import models.User;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ public interface DepartmentDao {
 
     //read
     List<Department>All();
+    Department getById(int id);
 
 
     //delete
