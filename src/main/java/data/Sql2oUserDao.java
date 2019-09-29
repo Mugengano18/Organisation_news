@@ -1,5 +1,6 @@
 package data;
 
+import models.Department;
 import models.User;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
@@ -25,6 +26,19 @@ public class Sql2oUserDao implements UserDao {
             user.setId(id);
             System.out.println();
         } catch (Sql2oException except){
+            System.out.println(except);
+        }
+    }
+
+    @Override
+    public void AddUserDepart(User user, Department depart) {
+        String query="INSERT INTO user_department(userid,departid) VALUES (:userId;departId)";
+        try(Connection connect=sql2o.open()){
+            connect.createQuery(query)
+                    .addParameter("userId",user.getId())
+                    .addParameter("departId",depart.getId())
+                    .executeUpdate();
+        }catch (Sql2oException except){
             System.out.println(except);
         }
     }

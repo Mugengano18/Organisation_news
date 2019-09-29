@@ -125,6 +125,26 @@ public class App {
 //
 //        });
 
+        //Adding users to departments
+        post("/users/:userId/depart/:departId", "application/json", (req, res) -> {
+
+            int userId = Integer.parseInt(req.params("userId"));
+            int departId = Integer.parseInt(req.params("departId"));
+            User user = userDao.getById(userId);
+            Department depart  = DepartmentDao.getById(departId);
+
+
+            if (user != null && depart != null){
+                //both exist and can be associated
+                DepartmentDao.AddDepartToUser(user,depart);
+                res.status(201);
+                return google.toJson(String.format("Restaurant '%s' and Foodtype '%s' have been associated",depart.getDname(), user.getUname()));
+            }
+            else {
+                throw new ApiException(404, String.format("User or department does not exist!!"));
+            }
+        });
+
         //posting the department news
         post("/news/new","application/json", (request, response) ->{
             News news=google.fromJson(request.body(),News.class);

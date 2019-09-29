@@ -9,6 +9,7 @@ public interface DepartmentDao {
 
     //adding
     void add(Department depart);
+    void AddDepartToUser(User user, Department depart);
 
     //read
     List<Department>All();

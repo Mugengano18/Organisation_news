@@ -1,5 +1,6 @@
 package data;
 
+import models.Department;
 import models.News;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
@@ -27,6 +28,19 @@ public class Sql2oNewsDao implements  NewsDao {
             System.out.println(except);
         }
 
+    }
+
+    @Override
+    public void AddNewsToDepart(News news, Department depart) {
+        String query="INSERT INTO  news_department(departid, newsid) VALUES (:newsId,:departId)";
+        try(Connection connect=sql2o.open()){
+            connect.createQuery(query)
+                    .addParameter("newsId",news.getId())
+                    .addParameter("departId",depart.getId())
+                    .executeUpdate();
+        }catch (Sql2oException except){
+            System.out.println(except);
+        }
     }
 
     @Override
