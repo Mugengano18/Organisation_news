@@ -1,8 +1,36 @@
 # Organisation_news
-this is an app where the user will be able to interact with the company's options
+By Mugengano Alice
+
+## Description
+this is an app where the user will be able to interact with the company's options like seeing all the users of the company and also seeing a specific user of the company,and will also be able to 
+see all the department in a company and you can associate it with the news frm the department and I used many relationships in datbse;
+## Application setup
+
+- If you want to implement this project make sure you have all the necessary tools installed in your machine and to have all the required dependencies to inplement the projec
+- If you want to get to where the app is use this link to access the repository[Organisation_api](https://github.com/Mugengano18/Organisation_news)
+- You also have to create databases and tables here is some help for the tables
+CREATE DATABASE organisation;
+\c organisation;
+CREATE TABLE users(id SERIAL PRIMARY KEY,name VARCHAR,positioninc VARCHAR,role VARCHAR,departid INTEGER);
+CREATE TABLE department(id SERIAL PRIMARY KEY,name VARCHAR,description VARCHAR,noofemployees VARCHAR);
+CREATE TABLE news(id SERIAL PRIMARY KEY,writtenby VARCHAR,content VARCHAR,departid INTEGER,createdon BIGINT);
+CREATE TABLE companynews(id SERIAL PRIMARY KEY,writtenby VARCHAR,content VARCHAR);
+CREATE TABLE user_department(id SERIAL PRIMARY KEY,userid INTEGER,departid INTEGER);
+CREATE TABLE news_department(id SERIAL PRIMARY KEY,departid INTEGER,newsid INTEGER);
+CREATE DATABASE organisation_test WITH TEMPLATE organisation;
 
 
-MIT License
+## Technologies Used
+
+- java
+- Spark framework
+- Junit
+- Postgress Database
+- Json and Gson
+
+
+
+## MIT License
 
 Copyright (c) 2019 Mugengano18
 
