@@ -15,6 +15,7 @@ public class Department {
         this.employee = employee;
     }
 
+
     public String getDname() {
         return dname;
     }
@@ -23,9 +24,10 @@ public class Department {
         this.dname = dname;
     }
 
-    public String getDescripton() {
+    public String getDescription() {
         return description;
     }
+
 
     public void setDescription(String description) {
         this.description = description;

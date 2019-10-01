@@ -1,0 +1,32 @@
+{{#partial "content"}}
+<div class="row">
+<div class="col-md-3"></div>
+<div class="col-md-6">
+{{#each general}}
+<p id="content">'{{writtenBy}}'</p>
+<p id="written">WrittenBy:{{content}}</p>
+<a href="news/delete"><button type="submit" class="btn btn-info">delete</button></a>
+{{/each}}
+</div>
+<div class="col-md-3"></div>
+
+</div>
+{{/partial}}
+{{> layout.hbs}}
+<style>
+#content{
+color:white;
+font-size:70px;
+text-align:center;
+font-family: 'Playfair Display', serif;
+
+}
+#written{
+font-family: 'Playfair Display', serif;
+color:white;
+text-align:center;
+}
+button{
+margin-left:300px;
+}
+</style>

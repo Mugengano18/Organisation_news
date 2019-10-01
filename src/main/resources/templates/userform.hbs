@@ -1,0 +1,42 @@
+{{#partial "content"}}
+<div class="col-md-3"></div>
+<div class="col-md-6">
+<form>
+<div class="md-form">
+        <label for="uname">Full name:</label>
+        <input type="text" id="name" class="form-control" name="name">
+      </div>
+      <div class="md-form">
+      <label for="position">Position in the company</label>
+      <input type="text" id="position" class="form-control" name="position">
+      </div>
+      <div class="md-form">
+      <label for="role">Role:</label>
+      <input type="text" id="role" class="form-control" name="role">
+      </div>
+      <div class="md-form">
+      <label for="depart">department id:</label>
+      <input type="number" id="departid" class="form-control" name="depart" min=1 max=10><br>
+      </div>
+      <div class="md-form">
+      <button type="submit" class="btn btn-success">Send</button>
+      </div>
+</form>
+</div>
+<div class="col-md-3"></div>
+{{/partial}}
+{{> layout.hbs}}
+<style>
+label{
+color:white;
+margin-top:60px;
+font-family: 'Playfair Display', serif;
+}
+input{
+font-family: 'Playfair Display', serif;
+}
+button{
+margin-left:250px;
+font-family: 'Playfair Display', serif;
+}
+</style>

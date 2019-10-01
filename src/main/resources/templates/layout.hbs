@@ -1,0 +1,55 @@
+{{#block "header"}}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{#block "title"}}Organisation News{{/block}}</title>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display&display=swap" rel="stylesheet">
+
+</head>
+{{/block}}
+<body>
+<ul class="nav nav-tabs">
+    <li role="presentation" class="nav"><a href="/">Home</a></li>
+     <li role="presentation" class="nav"><a href="/users/new">Add a user</a></li>
+      <li role="presentation" class="nav"><a href="/news">News</a></li>
+      <li role="presentation" class="nav"><a href="/departments">All departments</a></li>
+
+</ul>
+<div class="container-fluid">
+    <div class="card">
+    {{#block "content"}}
+
+    {{/block}}
+    </div>
+</div>
+{{#block "footer"}}
+    <footer>
+        <div class="container-fluid">
+            <p id="copy">Copyright &copy; All Rights Reserved Organisation news</p>
+        </div>
+    </footer>
+    </body>
+    </html>
+{{/block}}
+<style>
+body{
+background-image:linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),url(http://www.unitpol-detective.ro/pics/verif_afacerii.jpg);
+background-size:cover;
+
+}
+#copy{
+text-align:center;
+color:white;
+margin-top:350px;
+font-size:10px;
+}
+li{
+font-family: 'Playfair Display', serif;
+font-size:20px;
+}
+</style>

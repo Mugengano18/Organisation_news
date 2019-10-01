@@ -1,0 +1,42 @@
+{{#partial "content"}}
+<div class="col-md-3"></div>
+<div class="col-md-6">
+<form>
+<div class="md-form">
+        <label for="departmentname">Enter the Department name:</label>
+        <input type="text" id="depname" class="form-control" name="depname">
+      </div>
+
+      <div class="md-form">
+       <label for="description">Description:</label>
+       <textarea class="form-control" rows="5" id="description" name:"description"></textarea>
+
+      </div>
+      <div class="md-form">
+      <label for="employee">Enter the number of employees:</label>
+              <input type="number" id="nbrofemployee" class="form-control" name="employees" min=8><br>
+            </div>
+
+           <div class="md-form">
+           <button type="submit" class="btn btn-info">Send</button>
+           </div>
+
+</form>
+</div>
+<div class="col-md-3"></div>
+{{/partial}}
+{{> layout.hbs}}
+<style>
+label{
+color:white;
+margin-top:60px;
+font-family: 'Playfair Display', serif;
+}
+input{
+font-family: 'Playfair Display', serif;
+}
+button{
+margin-left:250px;
+font-family: 'Playfair Display', serif;
+}
+</style>

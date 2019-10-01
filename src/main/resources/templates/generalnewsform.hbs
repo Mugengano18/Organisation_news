@@ -1,0 +1,34 @@
+{{#partial "content"}}
+<div class="col-md-3"></div>
+<div class="col-md-6">
+<form action="/generalnews" method=post>
+<div class="md-form">
+        <label for="writtenby">Who wrote the news:</label>
+        <input type="text" id="written" class="form-control" name="writtenby">
+      </div>
+      <div class="md-form">
+              <label for="content">Content of the news:</label>
+             <input type="text" id="content" class="form-control" name="content"><br>
+            </div>
+      <div class="md-form">
+      <button type="submit" class="btn btn-success">Send</button>
+      </div>
+</form>
+</div>
+<div class="col-md-3"></div>
+{{/partial}}
+{{> layout.hbs}}
+<style>
+label{
+color:white;
+margin-top:60px;
+font-family: 'Playfair Display', serif;
+}
+input{
+font-family: 'Playfair Display', serif;
+}
+button{
+margin-left:250px;
+font-family: 'Playfair Display', serif;
+}
+</style>

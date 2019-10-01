@@ -16,7 +16,7 @@ public class Sql2oCompanynewsDao implements CompanynewsDao {
 
     @Override
     public void add(Companynews news) {
-        String query ="INSERT INTO companynews(content,writtenBy) VALUES (:content,:writtenBy)";
+        String query ="INSERT INTO companynews(writtenBy,content) VALUES (:writtenBy,:content)";
         try(Connection connect = sql2o.open()){
             int id =(int) connect.createQuery(query,true)
                     .bind(news)
@@ -32,6 +32,7 @@ public class Sql2oCompanynewsDao implements CompanynewsDao {
     public List<Companynews> getAll() {
        try(Connection connect=sql2o.open()){
            return  connect.createQuery("SELECT * FROM companynews")
+                   .throwOnMappingFailure(false)
                    .executeAndFetch(Companynews.class);
        }
     }

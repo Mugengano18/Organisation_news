@@ -46,7 +46,8 @@ public class Sql2oUserDao implements UserDao {
     @Override
     public List<User> All() {
         try(Connection connect=sql2o.open()){
-            return connect.createQuery("SELECT * FROM users")
+            return connect.createQuery("SELECT name FROM users")
+                    .throwOnMappingFailure(false)
                     .executeAndFetch(User.class);
         }
     }
@@ -56,6 +57,7 @@ public class Sql2oUserDao implements UserDao {
         try(Connection connect =sql2o.open()){
             return connect.createQuery("SELECT * FROM users WHERE id=:id;")
                     .addParameter("id",id)
+                    .throwOnMappingFailure(false)
                     .executeAndFetchFirst(User.class);
         }
     }
@@ -71,6 +73,7 @@ public class Sql2oUserDao implements UserDao {
                     .addParameter("role",newRole)
                     .addParameter("departid",newDepart)
                     .addParameter("id",id)
+                    .throwOnMappingFailure(false)
                     .executeUpdate();
         }catch (Sql2oException except){
             System.out.println(except);
@@ -84,6 +87,7 @@ public class Sql2oUserDao implements UserDao {
         try(Connection connect=sql2o.open()){
             connect.createQuery(query)
                     .addParameter("id",id)
+                    .throwOnMappingFailure(false)
                     .executeUpdate();
         }catch (Sql2oException except){
             System.out.println(except);
