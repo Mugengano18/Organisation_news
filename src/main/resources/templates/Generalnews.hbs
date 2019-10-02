@@ -2,11 +2,24 @@
 <div class="row">
 <div class="col-md-3"></div>
 <div class="col-md-6">
-{{#each general}}
-<p id="content">'{{writtenBy}}'</p>
-<p id="written">WrittenBy:{{content}}</p>
-<a href="news/delete"><button type="submit" class="btn btn-info">delete</button></a>
-{{/each}}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col" id="content">News</th>
+      <th scope="col" id="written">Writtenby</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+  {{#each general}}
+    <tr>
+      <td id="content">{{writtenBy}}</td>
+      <td id="written">{{content}}</td>
+      <td><a href="news/delete"><button type="submit" class="btn btn-info">delete</button></a></td>
+    </tr>
+    {{/each}}
+    </tbody>
+    </table>
 </div>
 <div class="col-md-3"></div>
 
@@ -16,15 +29,14 @@
 <style>
 #content{
 color:white;
-font-size:70px;
-text-align:center;
+font-size:20px;
 font-family: 'Playfair Display', serif;
 
 }
 #written{
 font-family: 'Playfair Display', serif;
 color:white;
-text-align:center;
+font-size:20px;
 }
 button{
 margin-left:300px;

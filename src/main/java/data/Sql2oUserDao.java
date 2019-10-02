@@ -17,7 +17,7 @@ public class Sql2oUserDao implements UserDao {
 
     @Override
     public void add(User user) {
-        String query ="INSERT INTO users(name, positioninc,role,departid) VALUES (:uname,:posInCom,:role,:depart)";
+        String query ="INSERT INTO users(name, positioninc,role,departid) VALUES (:name,:positioninc,:role,:departid)";
         try(Connection connect =sql2o.open()){
             int id= (int) connect.createQuery(query,true)
                     .bind(user)
@@ -65,7 +65,7 @@ public class Sql2oUserDao implements UserDao {
 
     @Override
     public void update(int id,String newName, String newPosInCom, String newRole, String newDepart) {
-        String query= "UPDATE users SET(name, positioninc,role,departid) = (:uname,:posInCom,:role,:depart) where id=:id;";
+        String query= "UPDATE users SET(name, positioninc,role,departid) = (:name,:positioninc,:role,:departid) where id=:id;";
         try (Connection connect=sql2o.open()){
             connect.createQuery(query)
                     .addParameter("name",newName)

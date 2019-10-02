@@ -1,0 +1,33 @@
+{{#partial "content"}}
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">position</th>
+      <th scope="col">Role</th>
+      <th scope="col">Department</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr>
+        <td>{{name}}</td>
+        <td>{{positioninc}}</td>
+        <td>{{role}}</td>
+        <td>{{departid}}</td>
+      </tr>
+      </tbody>
+      </table>
+{{/partial}}
+{{> layout.hbs}}
+<style>
+th{
+color:white;
+font-size:20px;
+font-family: 'Playfair Display', serif;
+}
+td{
+color:white;
+font-size:20px;
+font-family: 'Playfair Display', serif;
+}
+</style>

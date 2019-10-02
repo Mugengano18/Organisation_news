@@ -1,9 +1,41 @@
 {{#partial "content"}}
 <h2>All Departments:</h2>
-{{#each department}}
-<p>{{dname}}</p>
-<p>{{description}}</p>
-<p>{{employee}}</p>
-{{/each}}
+<table class="table">
+<thead>
+    <tr>
+      <th scope="col">department name</th>
+      <th scope="col">description</th>
+      <th scope="col">number of employees</th>
+    </tr>
+  </thead>
+  <tbody>
+  {{#each department}}
+  <tr class="table-dark">
+        <td>{{name}}</td>
+        <td>{{description}}</td>
+        <td>{{noofemployees}}</td>
+        <td><a href="/users/new"><button type="submit" class="btn btn-info">add users</button></a></td>
+        <td><a href="news/delete"><button type="submit" class="btn btn-info">delete</button></a></td>
+      </tr>
+      {{/each}}
+    </tbody>
+</table>
 {{/partial}}
 {{> layout.hbs}}
+
+<style>
+h2{
+color:white;
+}
+th{
+color:white;
+font-size:20px;
+font-family: 'Playfair Display', serif;
+}
+td{
+color:white;
+font-size:20px;
+font-family: 'Playfair Display', serif;
+}
+
+</style>

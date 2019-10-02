@@ -204,6 +204,28 @@ public class App {
             return new ModelAndView(model, "departmentform.hbs");
         }, new HandlebarsTemplateEngine());
 
+        //posting the deprt
+        post("/department/new",((request, response) -> {
+            Map<String,Object> model=new HashMap<>();
+            String name= request.queryParams("name");
+            String explain=request.queryParams("description");
+            int noofemployees= Integer.parseInt(request.queryParams("noofemployees"));
+            Department depart=new Department(name,explain,noofemployees);
+            DepartmentDao.add(depart);
+            System.out.println(noofemployees);
+            model.put("dep",depart);
+            return new ModelAndView(model, "savedepart.hbs");
+        }), new HandlebarsTemplateEngine());
+
+
+        //getting all the departments
+        get("/departments", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            List<Department>depart=DepartmentDao.All();
+            model.put("department",depart);
+            return new ModelAndView(model, "alldepartments.hbs");
+        }, new HandlebarsTemplateEngine());
+
 
         //getting the form to input the news
         get("/generalnews", (req, res) -> {
@@ -223,10 +245,37 @@ public class App {
             CompanynewsDao.add(company);
             return new ModelAndView(model, "Generalnews.hbs");
         }), new HandlebarsTemplateEngine());
+
+
+
         //getting the form for the user
         get("/users/new", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
+            List<Department>depart=DepartmentDao.All();
+            model.put("department",depart);
             return new ModelAndView(model, "userform.hbs");
+        }, new HandlebarsTemplateEngine());
+
+
+        //posting the users
+        post("/users/new",((request, response) -> {
+            Map<String,Object> model=new HashMap<>();
+            String name=request.queryParams("name");
+            String pos=request.queryParams("positioninc");
+            String role=request.queryParams("role");
+            String depart=request.params("departid");
+            User use=new User(name,pos,role,depart);
+            userDao.add(use);
+            return new ModelAndView(model, "saveuser.hbs");
+        }), new HandlebarsTemplateEngine());
+
+
+        //getting all the users
+        get("/users", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            List<User> user= userDao.All();
+            model.put("user",user);
+            return new ModelAndView(model, "allusers.hbs");
         }, new HandlebarsTemplateEngine());
 
 
@@ -253,12 +302,6 @@ public class App {
 
 
 
-        //getting all the departments
-        get("/departments", (req, res) -> {
-            Map<String, Object> model = new HashMap<>();
-            List<Department>depart=DepartmentDao.All();
-            model.put("department",depart);
-            return new ModelAndView(model, "alldepartments.hbs");
-        }, new HandlebarsTemplateEngine());
+
     }
 }

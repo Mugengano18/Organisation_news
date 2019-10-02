@@ -1,26 +1,31 @@
 {{#partial "content"}}
 <div class="col-md-3"></div>
 <div class="col-md-6">
-<form>
+<form action="/users/new" method="post">
 <div class="md-form">
         <label for="uname">Full name:</label>
         <input type="text" id="name" class="form-control" name="name">
       </div>
       <div class="md-form">
       <label for="position">Position in the company</label>
-      <input type="text" id="position" class="form-control" name="position">
+      <input type="text" id="position" class="form-control" name="positioninc">
       </div>
       <div class="md-form">
       <label for="role">Role:</label>
-      <input type="text" id="role" class="form-control" name="role">
+      <input type="text" id="role" class="form-control" name="role"><br>
       </div>
       <div class="md-form">
-      <label for="depart">department id:</label>
-      <input type="number" id="departid" class="form-control" name="depart" min=1 max=10><br>
-      </div>
+                            <label for="depart" style="color:white;">choose a department</label>
+                            <select class="form-control" id="sel1" name="departid">
+                            {{#each department}}
+                                <option>{{name}}</option>
+                            {{/each}}
+                            </select>
+            </div>
       <div class="md-form">
       <button type="submit" class="btn btn-success">Send</button>
       </div>
+
 </form>
 </div>
 <div class="col-md-3"></div>

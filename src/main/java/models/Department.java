@@ -3,25 +3,26 @@ package models;
 import java.util.Objects;
 
 public class Department {
-    private String dname;
+    private String name;
     private String description;
-    private int employee;
+    private int noofemployees;
     private int id;
 
 
-    public Department(String dname, String description, int employee) {
-        this.dname = dname;
+
+    public Department(String name, String description, int noofemployees) {
+        this.name = name;
         this.description = description;
-        this.employee = employee;
+        this.noofemployees = noofemployees;
+
     }
 
-
-    public String getDname() {
-        return dname;
+    public String getName() {
+        return name;
     }
 
-    public void setDname(String dname) {
-        this.dname = dname;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
@@ -33,12 +34,12 @@ public class Department {
         this.description = description;
     }
 
-    public int getEmployee() {
-        return employee;
+    public int getNoofemployees() {
+        return noofemployees;
     }
 
-    public void setEmployee(int employee) {
-        this.employee = employee;
+    public void setNoofemployees(int noofemployees) {
+        this.noofemployees = noofemployees;
     }
 
     public int getId() {
@@ -54,13 +55,13 @@ public class Department {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Department that = (Department) o;
-        return employee == that.employee &&
-                Objects.equals(dname, that.dname) &&
+        return noofemployees == that.noofemployees &&
+                Objects.equals(name, that.name) &&
                 Objects.equals(description, that.description);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(dname, description, employee);
+        return Objects.hash(name, description, noofemployees);
     }
 }

@@ -3,36 +3,35 @@ package models;
 import java.util.Objects;
 
 public class User {
-    private String uname;
-    private String posInCom;
+    private String name;
+    private String positioninc;
     private String role;
-    private int depart;
+    private String departid;
     private  int id;
 
 
 
-    public User(String uname, String posInCom, String role, int depart) {
-        this.uname = uname;
-        this.posInCom = posInCom;
+    public User(String name, String positioninc, String role, String departid) {
+        this.name = name;
+        this.positioninc = positioninc;
         this.role = role;
-        this.depart = depart;
+        this.departid = departid;
     }
 
-
-    public String getUname() {
-        return uname;
+    public String getName() {
+        return name;
     }
 
-    public void setUname(String uname) {
-        this.uname = uname;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getPosInCom() {
-        return posInCom;
+    public String getPositioninc() {
+        return positioninc;
     }
 
-    public void setPosInCom(String posInCom) {
-        this.posInCom = posInCom;
+    public void setPositioninc(String positioninc) {
+        this.positioninc = positioninc;
     }
 
     public String getRole() {
@@ -43,12 +42,12 @@ public class User {
         this.role = role;
     }
 
-    public int getDepart() {
-        return depart;
+    public String getDepartid() {
+        return departid;
     }
 
-    public void setDepart(int depart) {
-        this.depart = depart;
+    public void setDepartId(String departId) {
+        this.departid = departid;
     }
 
     public int getId() {
@@ -64,14 +63,14 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return depart == user.depart &&
-                Objects.equals(uname, user.uname) &&
-                Objects.equals(posInCom, user.posInCom) &&
+        return departid == user.departid &&
+                Objects.equals(name, user.name) &&
+                Objects.equals(positioninc, user.positioninc) &&
                 Objects.equals(role, user.role);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(uname, posInCom, role, depart);
+        return Objects.hash(name, positioninc, role, departid);
     }
 }
