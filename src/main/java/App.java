@@ -265,6 +265,9 @@ public class App {
             String role=request.queryParams("role");
             String depart=request.params("departid");
             User use=new User(name,pos,role,depart);
+            model.put("name",name);
+            model.put("position",pos);
+            model.put("role",role);
             userDao.add(use);
             return new ModelAndView(model, "saveuser.hbs");
         }), new HandlebarsTemplateEngine());

@@ -5,16 +5,18 @@
       <th scope="col">Name</th>
       <th scope="col">position</th>
       <th scope="col">Role</th>
-      <th scope="col">Department</th>
+
     </tr>
   </thead>
   <tbody>
+  {{#each user}}
   <tr>
         <td>{{name}}</td>
-        <td>{{positioninc}}</td>
+        <td>{{position}}</td>
         <td>{{role}}</td>
-        <td>{{departid}}</td>
+
       </tr>
+      {{/each}}
       </tbody>
       </table>
 {{/partial}}
